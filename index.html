@@ -39,35 +39,35 @@
 <body class="text-slate-800 antialiased pb-24">
 
     <!-- Top Navigation & Progress Header -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5">
+    <header class="bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3">
             <!-- Top Bar: Main Domain Switcher Tabs + Language Toggle Button -->
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
-                <div class="flex p-1 bg-slate-100 rounded-xl border border-slate-200 flex-1 max-w-md">
-                    <button id="domain-tab-condo" onclick="switchDomain('condo')" class="flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="flex p-1 bg-slate-100 rounded-xl border border-slate-200">
+                    <button id="domain-tab-condo" onclick="switchDomain('condo')" class="py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm">
                         <span>🏢</span>
-                        <span id="tab-label-condo">신규 콘도 매매</span>
+                        <span id="tab-label-condo">Condo</span>
                     </button>
-                    <button id="domain-tab-visa" onclick="switchDomain('visa')" class="flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900">
+                    <button id="domain-tab-visa" onclick="switchDomain('visa')" class="py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900">
                         <span>🛂</span>
-                        <span id="tab-label-visa">은퇴 e-비자 & 1년 연장</span>
+                        <span id="tab-label-visa">Visa</span>
                     </button>
                 </div>
 
                 <!-- Korean <-> Thai Language Toggle Button (For Thai Agents / Bank / Immigration) -->
-                <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0" title="태국 현지 에이전트·은행·이민국 직원에게 보여줄 때 태국어로 전환합니다">
+                <button id="lang-toggle-btn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0" title="태국 현지 에이전트·은행·이민국 직원에게 보여줄 때 태국어로 전환합니다">
                     <span>🇹🇭</span>
-                    <span id="lang-toggle-text">태국어 보기 (ภาษาไทย)</span>
+                    <span id="lang-toggle-text">태국어 (ไทย)</span>
                 </button>
             </div>
 
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5">
                 <div>
-                    <div id="header-badges" class="flex items-center gap-2">
-                        <span class="px-2.5 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
-                        <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
+                    <div id="header-badges" class="flex items-center gap-1.5">
+                        <span class="px-2 py-0.5 text-[11px] font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
+                        <span class="px-2 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
                     </div>
-                    <h1 id="header-title" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">태국 신규 콘도 매매 & 등기 마스터 체크리스트</h1>
+                    <h1 id="header-title" class="text-lg sm:text-2xl font-bold text-slate-900 mt-1">태국 신축콘도 구매 체크리스트</h1>
                     <p id="header-subtitle" class="text-xs sm:text-sm text-slate-500">사전 실사부터 유심·계좌 개설, FET 외화송금, Chanote 명의이전까지 단계별 완벽 가이드</p>
                 </div>
                 
@@ -707,15 +707,15 @@
         const domainConfigs = {
             condo: {
                 badges: `
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
                 `,
                 badgesTh: `
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-700 rounded-full">คู่มือซื้อคอนโดมิเนียมในประเทศไทย</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-full">โควตาต่างชาติ (Foreign Freehold)</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-indigo-100 text-indigo-700 rounded-full">คู่มือซื้อคอนโดมิเนียมในประเทศไทย</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full">โควตาต่างชาติ (Foreign Freehold)</span>
                 `,
-                title: '태국 신규 콘도 매매 & 등기 마스터 체크리스트',
-                titleTh: 'รายการตรวจสอบขั้นตอนการซื้อคอนโดมิเนียมใหม่และโอนกรรมสิทธิ์ (สำหรับชาวต่างชาติ)',
+                title: '태국 신축콘도 구매 체크리스트',
+                titleTh: 'รายการตรวจสอบการซื้อคอนโดมิเนียมใหม่และโอนกรรมสิทธิ์',
                 subtitle: '사전 실사부터 유심·계좌 개설, FET 외화송금, Chanote 명의이전까지 단계별 완벽 가이드',
                 subtitleTh: 'ตั้งแต่การจอง เปิดบัญชีธนาคาร โอนเงินต่างประเทศ (FET) จนถึงวันโอนกรรมสิทธิ์ที่กรมที่ดิน',
                 accent: 'indigo',
@@ -723,15 +723,15 @@
             },
             visa: {
                 badges: `
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-teal-100 text-teal-700 rounded-full">만 50세 이상 은퇴비자</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-amber-100 text-amber-800 rounded-full">Non-O (90일) → 현지 1년 연장</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-teal-100 text-teal-700 rounded-full">만 50세 이상 은퇴비자</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-amber-100 text-amber-800 rounded-full">Non-O (90일) → 현지 1년 연장</span>
                 `,
                 badgesTh: `
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-teal-100 text-teal-700 rounded-full">วีซ่าเกษียณอายุ (อายุ 50 ปีขึ้นไป)</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold bg-amber-100 text-amber-800 rounded-full">Non-O (90 วัน) → ต่ออายุ 1 ปีในไทย</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-teal-100 text-teal-700 rounded-full">วีซ่าเกษียณอายุ (อายุ 50 ปีขึ้นไป)</span>
+                    <span class="px-2 py-0.5 text-[11px] font-bold bg-amber-100 text-amber-800 rounded-full">Non-O (90 วัน) → ต่ออายุ 1 ปีในไทย</span>
                 `,
-                title: '태국 은퇴 e-비자(Non-O) & 현지 1년 연장 체크리스트',
-                titleTh: 'รายการตรวจสอบการขอวีซ่าเกษียณอายุ (Non-O e-Visa) และการขออยู่ต่อ 1 ปีในประเทศไทย',
+                title: '은퇴 비자(non-O) 발급 체크리스트',
+                titleTh: 'รายการตรวจสอบการขอวีซ่าเกษียณอายุ (Non-O e-Visa) และการขออยู่ต่อ 1 ปี',
                 subtitle: '온라인 e-Visa 발급부터 입국 후 80만 바트 2개월 예치, 이민국 1년 연장 및 90일 보고까지',
                 subtitleTh: 'ตั้งแต่การยื่น e-Visa เปิดบัญชีเงินฝาก 800,000 บาท จนถึงการยื่นต่ออายุวีซ่า 1 ปีที่ ตม.',
                 accent: 'teal',
@@ -773,10 +773,10 @@
             const isTh = currentLang === 'th';
 
             if (isTh) {
-                btn.className = 'px-3.5 py-2 rounded-xl border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 text-indigo-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0';
-                btnText.textContent = '🇰🇷 한국어로 돌아가기 (เกาหลี)';
-                document.getElementById('tab-label-condo').textContent = 'ซื้อคอนโดใหม่ในไทย';
-                document.getElementById('tab-label-visa').textContent = 'วีซ่าเกษียณ Non-O 1 ปี';
+                btn.className = 'px-3 py-1.5 rounded-xl border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 text-indigo-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0';
+                btnText.textContent = '🇰🇷 한국어 (เกาหลี)';
+                document.getElementById('tab-label-condo').textContent = 'Condo';
+                document.getElementById('tab-label-visa').textContent = 'Visa';
                 document.getElementById('progress-label').textContent = 'ความคืบหน้า';
                 document.getElementById('btn-expand-all').textContent = 'ขยายทั้งหมด';
                 document.getElementById('btn-reset').textContent = 'รีเซ็ต';
@@ -806,10 +806,10 @@
 
                 document.querySelectorAll('.save-status-indicator').forEach(el => el.textContent = 'บันทึกอัตโนมัติแล้ว');
             } else {
-                btn.className = 'px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0';
-                btnText.textContent = '🇹🇭 태국어 보기 (ภาษาไทย)';
-                document.getElementById('tab-label-condo').textContent = '신규 콘도 매매';
-                document.getElementById('tab-label-visa').textContent = '은퇴 e-비자 & 1년 연장';
+                btn.className = 'px-3 py-1.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 shrink-0';
+                btnText.textContent = '🇹🇭 태국어 (ไทย)';
+                document.getElementById('tab-label-condo').textContent = 'Condo';
+                document.getElementById('tab-label-visa').textContent = 'Visa';
                 document.getElementById('progress-label').textContent = '현재 탭 진행률';
                 document.getElementById('btn-expand-all').textContent = '모두펼침';
                 document.getElementById('btn-reset').textContent = '초기화';
@@ -1198,8 +1198,8 @@
             const visaTab = document.getElementById('domain-tab-visa');
 
             if (domain === 'condo') {
-                condoTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm';
-                visaTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
+                condoTab.className = 'py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm';
+                visaTab.className = 'py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
                 document.getElementById('memo-section-condo').classList.remove('hidden');
                 document.getElementById('memo-section-visa').classList.add('hidden');
                 document.getElementById('extra-section-condo').classList.remove('hidden');
@@ -1208,8 +1208,8 @@
                 document.getElementById('progress-text').className = 'text-sm font-bold text-indigo-600';
                 document.getElementById('instruction-hint').className = 'flex items-center justify-between bg-indigo-50/80 border border-indigo-100 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-indigo-900';
             } else {
-                visaTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-teal-700 shadow-sm';
-                condoTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
+                visaTab.className = 'py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-teal-700 shadow-sm';
+                condoTab.className = 'py-1.5 px-3.5 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
                 document.getElementById('memo-section-visa').classList.remove('hidden');
                 document.getElementById('memo-section-condo').classList.add('hidden');
                 document.getElementById('extra-section-visa').classList.remove('hidden');
