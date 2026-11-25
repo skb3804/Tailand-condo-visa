@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태국 신규 콘도 매매 & 은퇴 e-비자 마스터 체크리스트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .step-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .chevron-icon {
+            transition: transform 0.25s ease;
+        }
+        .expanded .chevron-icon {
+            transform: rotate(180deg);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased pb-24">
+
+    <!-- Top Navigation & Progress Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5">
+            <!-- Main Domain Switcher Tabs -->
+            <div class="flex p-1 bg-slate-100 rounded-xl border border-slate-200 mb-3.5 max-w-md">
+                <button id="domain-tab-condo" onclick="switchDomain('condo')" class="flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm">
+                    <span>🏢</span>
+                    <span>신규 콘도 매매</span>
+                </button>
+                <button id="domain-tab-visa" onclick="switchDomain('visa')" class="flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900">
+                    <span>🛂</span>
+                    <span>은퇴 e-비자 & 1년 연장</span>
+                </button>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                    <div id="header-badges" class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
+                        <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
+                    </div>
+                    <h1 id="header-title" class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">태국 신규 콘도 매매 & 등기 마스터 체크리스트</h1>
+                    <p id="header-subtitle" class="text-xs sm:text-sm text-slate-500">사전 실사부터 유심·계좌 개설, FET 외화송금, Chanote 명의이전까지 단계별 완벽 가이드</p>
+                </div>
+                
+                <!-- Progress Box -->
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 min-w-[210px]">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="text-xs font-semibold text-slate-600">현재 탭 진행률</span>
+                        <span id="progress-text" class="text-sm font-bold text-indigo-600">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                        <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between items-center mt-1.5 text-[11px] text-slate-400">
+                        <span id="completed-count">0 / 0 완료</span>
+                        <div class="space-x-2">
+                            <button onclick="toggleAllAccordions(true)" class="text-indigo-600 hover:underline font-medium">모두펼침</button>
+                            <span>·</span>
+                            <button onclick="resetProgress()" class="text-rose-500 hover:underline font-medium">초기화</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs (Dynamically Rendered per Domain) -->
+            <div class="flex gap-2 mt-4 overflow-x-auto pb-1" id="phase-tabs"></div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 mt-6 space-y-6">
+
+        <!-- Condo Memo Card -->
+        <section id="memo-section-condo" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    내 분양 콘도 & 계좌 메모장 (자동 저장)
+                </h2>
+                <span class="text-xs text-emerald-600 font-medium save-status-indicator">브라우저 자동 저장됨</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">콘도명 & 확정 동/호수</label>
+                    <input type="text" id="memo-unit" placeholder="예: Condo Name Unit 1012" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">총 분양가 & 면적</label>
+                    <input type="text" id="memo-price" placeholder="예: 3,500,000 THB (35 SQM)" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">태국 계좌번호 & 은행명</label>
+                    <input type="text" id="memo-bank" placeholder="개설 후 은행/계좌/SWIFT 기록" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">태국 유심 번호 & 만료일</label>
+                    <input type="text" id="memo-sim" placeholder="예: 08X-XXX-XXXX (만료일 기록)" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- Visa Memo Card -->
+        <section id="memo-section-visa" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                    은퇴 비자 & 80만 바트 2개월 예치(Seasoning) 일정 메모장
+                </h2>
+                <span class="text-xs text-emerald-600 font-medium save-status-indicator">브라우저 자동 저장됨</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">태국 입국일 & 90일 만료일</label>
+                    <input type="text" id="visa-entry" placeholder="예: 2026-08-20 입국 / 11-17 만료" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">80만 바트 입금완료일 (기준일)</label>
+                    <input type="text" id="visa-deposit-date" placeholder="입금일 + 60일 후부터 연장가능" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">카시콘(또는 개설) 계좌 & SWIFT</label>
+                    <input type="text" id="visa-bank" placeholder="예: Kasikorn / KASITHBK" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-500 mb-1">이민국 방문 예정일 & 90일 신고</label>
+                    <input type="text" id="visa-imm-date" placeholder="만료 30일 전~만료일 사이 방문" class="memo-input w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- Instruction Hint -->
+        <div id="instruction-hint" class="flex items-center justify-between bg-indigo-50/80 border border-indigo-100 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-indigo-900">
+            <div class="flex items-center gap-2">
+                <span class="text-base">👇</span>
+                <span>각 항목의 <strong>제목 영역을 클릭하면 펼쳐지면서 상세한 이유, 오류 교정 사항, 실무 팁</strong>을 확인할 수 있습니다.</span>
+            </div>
+        </div>
+
+        <!-- Checklist Container -->
+        <div id="checklist-container" class="space-y-6">
+            <!-- Dynamically Rendered Phases -->
+        </div>
+
+        <!-- CONDO DOMAIN EXTRA SECTIONS -->
+        <div id="extra-section-condo" class="space-y-6">
+            <!-- Quick Reference Tools (SIM Dial Codes & Remittance Template) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <!-- AIS SIM Cheat Sheet -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        태국 AIS 유심 필수 다이얼 코드 (현지/한국 공용)
+                    </h3>
+                    <div class="space-y-2.5 text-sm">
+                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-medium text-slate-700">여권 등록 명의 확인 (개통 직후 필수)</span>
+                            <code class="px-2 py-1 bg-indigo-50 text-indigo-700 font-bold rounded">*161# 통화</code>
+                        </div>
+                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-medium text-slate-700">해외 로밍 활성화 (출국 전 필수)</span>
+                            <code class="px-2 py-1 bg-indigo-50 text-indigo-700 font-bold rounded">*125*1# 통화</code>
+                        </div>
+                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="font-medium text-slate-700">잔액 및 유효기간 확인</span>
+                            <code class="px-2 py-1 bg-indigo-50 text-indigo-700 font-bold rounded">*121# 통화</code>
+                        </div>
+                        <div class="p-3 bg-blue-50/70 text-blue-900 rounded-lg text-xs leading-relaxed">
+                            💡 <strong>1년 연장 꿀팁:</strong> myAIS 앱에서 해외결제 카드로 최소금액 <strong>10바트씩 12번 연속 충전</strong>(총 120바트)하면 유효기간이 365일(최대치)로 즉시 연장됩니다. (은행 개설 후에는 태국 은행 앱 Top-up으로 수수료 없이 충전 가능)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FET Remittance Purpose Copy Box -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                            해외송금 사유(Purpose) 영문 문구 복사
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">한국 은행 해외송금 비고란에 반드시 아래 영문 목적을 기재해야 FET(외환송금증명서)가 정상 발급됩니다. (원화/바트 송금 금지 → 반드시 <strong>USD 외화</strong>로 송금)</p>
+                        <div class="p-3.5 bg-slate-900 text-emerald-400 font-mono text-xs sm:text-sm rounded-xl relative">
+                            <p id="remittance-text">To purchase a condominium unit [Condo Name Unit No]</p>
+                        </div>
+                    </div>
+                    <button onclick="copyTextById('remittance-text', '콘도 송금 사유 영문 문구가 복사되었습니다.')" class="mt-3 w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2a2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        송금 사유 영문 문구 복사하기
+                    </button>
+                </div>
+            </section>
+
+            <!-- Additional Practical Tips & Reference Guide (Condo) -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <span class="p-1.5 bg-amber-100 text-amber-700 rounded-lg text-sm">📌</span>
+                    태국 신규 콘도 매수 기타 핵심 팁 & 참고사항
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">1. 납부 비율 표준 구조 & 환율 리스크 관리</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            일반적인 태국 선분양 납부 비율은 <strong>예약금(1~5%) → 계약금(10~20%) → 중도금(20~40%) → 준공 잔금(40~70%)</strong> 순입니다. 공사 기간(2~3년) 동안 원/달러 및 달러/바트 환율 변동이 크므로, USD 환율이 유리할 때 한국 외화예금에 분할 매수해 두었다가 송금하는 전략이 유리합니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">2. 보유 및 향후 매도 시 세금 구조 (오류 교정)</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            • <strong>보유세(Land & Building Tax):</strong> 매년 부과되는 재산세 성격(주거용 기준 공시가에 따라 매우 낮은 세율 적용).<br>
+                            • <strong>임대소득세:</strong> 태국 국세청(Revenue Department) 신고 대상(누진세율 0~35%, 세무 ID 발급 필요).<br>
+                            • <strong>매도시 세금:</strong> 보유 기간 <strong>5년 미만</strong> 매도 시 특혜사업세(SBT) <strong>3.3%</strong>가 부과되며, <strong>5년 이상</strong> 보유 시 인지세(Stamp Duty) <strong>0.5%</strong>로 감면됩니다(원천징수세 및 이전비 별도).
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">3. 한국 국세청 '해외금융계좌 신고' (5억 원 기준)</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            중도금·잔금 납부를 위해 태국 은행 계좌에 자금을 예치해 둘 때, 연중 매월 말일 중 하루라도 태국 계좌 잔액 합계가 원화 환산 <strong>5억 원</strong>을 초과하면 다음 해 6월 한국 국세청에 해외금융계좌 신고를 해야 합니다. (미신고 시 과태료 부과)
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">4. 비자(Visa) 및 대리 등기(POA) 활용 팁</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            콘도 매수 자체는 일반 무비자(관광) 입국 상태로도 아무런 제한이 없습니다. 또한 준공 시점 토지국(Land Office) 등기 이전은 본인이 직접 방문하거나, 공증된 <strong>위임장(Power of Attorney, POA)</strong>을 통해 태국 변호사나 신뢰할 수 있는 대리인이 대신 처리할 수 있습니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">5. 부대비용 계산 시 여유 자금 확보</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            등기 당일 매매 잔금 외에 현금(바트)으로 납부해야 하는 부대비용이 분양가의 약 <strong>2.5% ~ 3.5%</strong> 수준으로 발생합니다. 미리 태국 본인 계좌에 바트화로 넉넉히 준비해 두어야 등기가 지연되지 않습니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">6. 신규분양 프로모션(Freebies) 계약서 명시</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            에이전트나 영업사원이 구두로 약속한 혜택(가전제품 패키지, 가구 풀옵션, 첫해 관리비 면제, 이전비 지원 등)은 반드시 계약서 부속 서류(Promotion List / Spec Sheet)에 서면으로 기재하고 직인을 받아야 추후 분쟁을 막을 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISA DOMAIN EXTRA SECTIONS -->
+        <div id="extra-section-visa" class="hidden space-y-6">
+            <!-- Quick Reference Tools (Remittance Template & TM.7 Guide) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <!-- Visa Remittance Purpose & SWIFT Box -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+                            80만 바트 해외송금 정보 & 목적 문구 복사
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-3">한국 은행에서 태국 본인 계좌로 80만 바트 송금 시 반드시 <strong>외화(USD)</strong>로 송금하고 비고란에 아래 영문 목적을 입력해야 이민국용 외화입금증명서(Credit Advice/FET) 발급이 수월합니다.</p>
+                        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1 mb-2.5 text-slate-700">
+                            <div>• <strong>Kasikorn Bank SWIFT (BIC):</strong> <code class="font-bold text-teal-700">KASITHBK</code></div>
+                            <div>• <strong>수취인 성명:</strong> 여권 영문 성명과 띄어쓰기까지 100% 일치</div>
+                        </div>
+                        <div class="p-3.5 bg-slate-900 text-emerald-400 font-mono text-xs sm:text-sm rounded-xl">
+                            <p id="visa-remittance-text">Retirement visa deposit and living expenses in Thailand</p>
+                        </div>
+                    </div>
+                    <button onclick="copyTextById('visa-remittance-text', '은퇴 비자 송금 사유 영문 문구가 복사되었습니다.')" class="mt-3 w-full py-2.5 px-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2a2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        은퇴 비자 송금 목적 영문 복사하기
+                    </button>
+                </div>
+
+                <!-- TM.7 Form Sample Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2 mb-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                        이민국 연장 신청서 (TM.7) 영문 작성 예시
+                    </h3>
+                    <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-1.5 font-mono text-slate-700 leading-relaxed">
+                        <div><span class="text-slate-400">Immigration Office:</span> <strong>CHIANG MAI IMMIGRATION</strong></div>
+                        <div><span class="text-slate-400">Date:</span> <strong>20 AUGUST 2026</strong> | <span class="text-slate-400">Title:</span> <strong>MR. / MRS.</strong></div>
+                        <div><span class="text-slate-400">Family / First / Middle:</span> <strong>JUNG / MIN / HO</strong></div>
+                        <div><span class="text-slate-400">Age & DOB:</span> <strong>55</strong> (<strong>23 / 05 / 1977</strong> - 일/월/년 순)</div>
+                        <div><span class="text-slate-400">Place of Birth / Nationality:</span> <strong>BUSAN, KOREA / KOREAN</strong></div>
+                        <div><span class="text-slate-400">Visa Type / Transport:</span> <strong>NON-IMMIGRANT O / AIR</strong></div>
+                        <div><span class="text-slate-400">From / Arrived at:</span> <strong>BUSAN / CHIANG MAI INTL AIRPORT</strong></div>
+                        <div><span class="text-slate-400">Extension Period / Reason:</span> <strong>365 days / RETIREMENT</strong></div>
+                    </div>
+                    <p class="text-[11px] text-rose-600 font-medium mt-2">⚠️ 하단 "FOR OFFICIAL USE ONLY" 칸은 절대 적지 말고 비워두세요. 뒷면 태국 주소·전화번호·서명란까지 모두 기재해야 합니다.</p>
+                </div>
+            </section>
+
+            <!-- Additional Practical Tips & Reference Guide (Visa) -->
+            <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2 mb-4">
+                    <span class="p-1.5 bg-teal-100 text-teal-700 rounded-lg text-sm">🛂</span>
+                    태국 은퇴 비자(Non-O) 핵심 주의사항 & 사후 의무
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">1. 왜 O-A 비자가 아닌 Non-O 비자를 선택할까?</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <strong>Non-O(90일 단수)</strong>는 한국 대사관 신청 시 영문 범죄경력증명서나 10만 달러 상당의 고액 건강보험 가입 의무가 면제되어 발급 비용과 절차가 훨씬 간편합니다. 입국 후 태국 은행에 80만 바트를 2개월 예치한 뒤 이민국에서 1년(365일)으로 연장하는 것이 표준 루트입니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">2. 배우자 동반 신청 시 재정 요건 주의</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            부부가 각자 본인 명의로 은퇴(Retirement) Non-O 비자를 신청할 경우, <strong>1인당 각각 80만 바트(총 160만 바트)</strong>의 잔고 증명이 필요합니다. (단, 1인이 주 신청자로 80만 바트를 예치하고 다른 배우자가 혼인관계증명서 번역·공증을 통해 '동반가족(Dependent)' Non-O 비자로 신청하면 1인분 80만 바트만으로도 가능합니다.)
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">3. 입국 후 '골든타임 30일' 역산 법칙</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Non-O 비자로 입국하면 <strong>90일 체류 허가</strong>를 받습니다. 1년 연장 신청일 기준으로 태국 은행 잔고 80만 바트가 <strong>최소 2개월(60일) 이상 유지</strong>되어 있어야 하므로, 늦어도 입국 후 30일 이내(가급적 입국 첫 주)에 계좌 개설과 80만 바트 입금을 완료해야 만료일 전에 연장이 가능합니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">4. 1년 연장 후 '90일 거주지 보고 (TM.47)' 의무</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            1년 연장 승인 후 태국에 계속 체류하는 동안에는 <strong>매 90일마다</strong> 이민국 방문, 온라인(TM.47 사이트), 또는 우편으로 거주지 신고를 해야 합니다. (만기일 기준 15일 전~7일 후까지 가능, 기한 도과 시 벌금 2,000바트 부과. 해외 출국 후 재입국 시에는 입국일로부터 다시 90일 카운트 시작)
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">5. 해외 출국 전 '리엔트리 퍼밋(Re-entry Permit)' 필수</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            1년 연장 비자(Extension of Stay)는 단수 체류 허가입니다. 한국 방문이나 해외여행을 위해 태국을 출국하기 전, 반드시 이민국이나 공항 출국장(이민국 데스크)에서 <strong>Re-entry Permit (단수 1,000바트 / 복수 3,800바트)</strong>을 발급받아야 비자가 소멸되지 않습니다.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+                        <h4 class="font-bold text-slate-900">6. 연장 후 80만 바트 예치금 유지 규정</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            1년 연장 승인 직후 모든 돈을 인출하면 다음 해 재연장이 거절됩니다. 승인일로부터 <strong>최소 3개월간 80만 바트 전액 유지</strong>, 이후 다음 연장 신청 2개월 전까지는 최소 <strong>40만 바트 이상</strong> 잔액을 유지한 뒤 다시 80만 바트로 채워 넣어야 내년도 1년 연장이 정상 승인됩니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm font-medium transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
+        <span class="text-emerald-400">✓</span>
+        <span id="toast-msg">복사되었습니다.</span>
+    </div>
+
+    <script>
+        // 1. CONDO CHECKLIST DATA
+        const condoChecklistData = [
+            {
+                id: 'phase1',
+                badge: 'PHASE 1',
+                title: '출국 전 사전 준비 & 법적 실사 (Due Diligence)',
+                subtitle: '계약 전 리스크 원천 차단 및 현지 결제·통신·서류 완벽 세팅',
+                items: [
+                    {
+                        id: 'p1_1',
+                        title: '외국인 쿼터(Foreign Quota 49%) 잔여 확인 및 서면 확약',
+                        summary: '해당 호실이 외국인 완전소유(Freehold) 한도 내에 있는지 사전 확인서 요청',
+                        tag: '필수권리',
+                        tagColor: 'rose',
+                        reason: '태국 콘도법상 외국인은 토지를 소유할 수 없으며, 콘도 건물 전체 연면적의 49% 이내에서만 완전소유(Freehold) 등기가 가능합니다. 구두로만 듣고 계약했다가 나중에 외국인 쿼터가 소진되어 태국인 쿼터(Leasehold 장기임대 등)로 넘어가면 내 명의로 영구 등기가 불가능하므로, 계약 전 반드시 해당 호실의 Foreign Quota 배정 확인서를 서면으로 받아야 합니다.'
+                    },
+                    {
+                        id: 'p1_2',
+                        title: '환경영향평가(EIA) 승인 여부 및 개발사·허가 검증',
+                        summary: 'EIA 승인 현황 체크 및 미승인 시 계약금 전액 환불 조항 필수 확인',
+                        tag: '법적실사',
+                        tagColor: 'amber',
+                        reason: '태국은 일정 규모 이상의 콘도 건축 시 환경영향평가(EIA) 승인이 나야 정식 착공이 가능합니다. 승인 전 분양하는 현장의 경우 허가가 지연되거나 무산될 위험이 있으므로, 시행사 법인명·건축허가번호를 확인하고 계약서에 "EIA 미승인 시 납입금 100% 전액 환불" 조항이 명시되어 있는지 반드시 확인해야 합니다.'
+                    },
+                    {
+                        id: 'p1_3',
+                        title: 'VISA / Master 신용카드 해외결제 한도 상향',
+                        summary: '현지 모델하우스 즉석 예약금(5만~20만 THB) 결제를 위한 한도 확보',
+                        tag: '출국준비',
+                        tagColor: 'blue',
+                        reason: '현지 모델하우스에서 마음에 드는 호실을 홀딩하려면 즉석 결제를 요구합니다. 계좌 개설 전이라 해외송금이 어렵기 때문에 신용카드로 예약금(보통 5만~20만 바트, 약 200만~800만 원)을 결제하는 경우가 많습니다. 카드 한도를 미리 상향하고, 개발사별 카드 결제 수수료(2~3% 부과 여부)도 사전 확인하세요.'
+                    },
+                    {
+                        id: 'p1_4',
+                        title: '여권 잔여 유효기간(6개월 이상) 및 영문 거주지 증명서 준비',
+                        summary: '태국 은행 계좌 개설 시 요구하는 영문 주민등록등본·카드명세서 지참',
+                        tag: '서류준비',
+                        tagColor: 'slate',
+                        reason: '태국 입국 및 은행 개설 시 여권 유효기간이 최소 6개월 이상 남아 있어야 합니다. 또한 일부 태국 은행은 자금세탁방지 규정에 따라 한국 내 실제 거주지 증명을 요구하므로, 정부24에서 영문 주민등록등본과 영문 신용카드 명세서를 미리 출력해 지참하면 거절 확률을 크게 낮출 수 있습니다.'
+                    },
+                    {
+                        id: 'p1_5',
+                        title: '듀얼심(Dual SIM) 세팅: 한국 번호를 eSIM으로 전환',
+                        summary: '물리 유심 슬롯을 비워 태국 선불 유심을 상시 장착할 수 있도록 준비',
+                        tag: '통신팁',
+                        tagColor: 'emerald',
+                        reason: '완공까지 2~3년 동안 한국에서 태국 은행 앱 이체 및 OTP 인증 문자를 받으려면 태국 유심을 계속 유지해야 합니다. 한국 번호를 eSIM으로 전환해 두고 물리 유심 슬롯에 태국 유심을 상시 꽂아두면 유심을 뺐다 꼈다 하며 분실할 위험이 없으며, 기기 변경 시에도 물리 유심은 재발급 절차 없이 바로 옮겨 끼울 수 있어 훨씬 안전합니다.'
+                    }
+                ]
+            },
+            {
+                id: 'phase2',
+                badge: 'PHASE 2',
+                title: '태국 현지 방문: 유심 개통 → 예약 계약 → 은행 계좌 개설',
+                subtitle: '반드시 [① 유심 개통 → ② 예약금 납부 및 영수증 확보 → ③ 은행 계좌 개설] 순서로 진행',
+                items: [
+                    {
+                        id: 'p2_1',
+                        title: '순서 ①: 공식 매장에서 선불 유심(Prepaid SIM) 개통 & 여권번호 대조',
+                        summary: 'AIS 등 공식 매장에서 기본 선불 유심 개통 직후 *161# 통화로 명의 확인',
+                        tag: '순서 ①',
+                        tagColor: 'emerald',
+                        reason: '태국 은행은 "은행 계좌 여권번호"와 "휴대폰 유심 등록 여권번호" 및 영문 스펠링이 100% 일치해야 모바일 뱅킹을 승인해 줍니다. 대형 쇼핑몰 내 공식 매장에서 여권 원본(얼굴 생체인증 필요)으로 가장 저렴한 기본 유심(약 50바트)을 개통한 직후, 매장 직원이 보는 앞에서 *161#을 눌러 여권번호와 이름 스펠링에 오타가 없는지 즉시 확인하세요.'
+                    },
+                    {
+                        id: 'p2_2',
+                        title: '유심 1년(365일) 유효기간 연장 및 해외 로밍 활성화',
+                        summary: 'myAIS 앱에서 10바트씩 12회 충전(1년 연장) 후 *125*1# 통화로 로밍 켜기',
+                        tag: 'OTP필수',
+                        tagColor: 'indigo',
+                        reason: '기본 선불 유심은 유효기간이 30일뿐이라 방치하면 번호가 해지되어 태국 은행 앱 인증이 불가능해집니다. 출국 전 현지에서 myAIS 앱을 설치해 해외결제 카드로 10바트씩 12번 연속 충전(총 120바트)하면 유효기간이 최대치인 365일로 늘어납니다. 또한 한국에서 OTP 문자를 무료로 수신하려면 반드시 *125*1#을 눌러 해외 로밍을 활성화해야 합니다.'
+                    },
+                    {
+                        id: 'p2_3',
+                        title: '순서 ②: 예약 계약(Reservation) 체결 및 예약금(1~5%) 납부',
+                        summary: '개발사 공식 계좌/카드로만 납부하고 동·호수·영문성명 기재된 공식 영수증 수령',
+                        tag: '순서 ②',
+                        tagColor: 'rose',
+                        reason: '일반 관광비자 방문자는 개인 자격으로 태국 은행 계좌 개설이 거의 불가능하며, "태국 부동산 매수 계약자"라는 증빙이 있어야 예외적으로 열어줍니다. 따라서 계좌 개설보다 예약금 납부가 먼저입니다. 단, 절대 에이전트 개인 계좌로 입금하지 말고 개발사 공식 법인 계좌 또는 모델하우스 카드로 결제한 뒤 공식 영수증을 즉시 받으세요.'
+                    },
+                    {
+                        id: 'p2_4',
+                        title: '개발사/에이전시 은행 개설 협조 공문(Recommendation Letter) 확보',
+                        summary: '은행 제출용 공식 추천서, 담당자 은행 동행, 필요 시 거주지 증명(TM30) 요청',
+                        tag: '계좌필수',
+                        tagColor: 'amber',
+                        reason: '예약 영수증만 들고 지점에 가면 거절당하는 경우가 많습니다. 개발사나 공식 에이전시 측에 은행 제출용 계좌 개설 협조 공문(Recommendation Letter)을 요청하고, 가급적 개발사와 협약된 은행 지점에 에이전시 직원이 동행하여 서류를 접수하도록 협조를 구하면 당일 통장 개설 성공률이 매우 높습니다.'
+                    },
+                    {
+                        id: 'p2_5',
+                        title: '순서 ③: 태국 현지 은행 계좌 개설 및 모바일 뱅킹(OTP) 테스트',
+                        summary: '여권·추천서·예약증서 지참 방문 및 앱 이체·OTP 수신 정상 작동 현장 확인',
+                        tag: '순서 ③',
+                        tagColor: 'emerald',
+                        reason: '단기 체류 외국인 계좌 개설 시 은행 측에서 안전보장 차원의 상해보험(연 1,000~3,000 THB) 가입을 조건으로 요구할 수 있습니다. 통장과 체크카드를 수령한 뒤에는 지점을 나오기 전에 K PLUS 등 모바일 뱅킹 앱을 설치하고, 개통한 태국 유심으로 인증 문자가 정상 수신되는지 반드시 테스트하세요.'
+                    }
+                ]
+            },
+            {
+                id: 'phase3',
+                badge: 'PHASE 3',
+                title: '본계약(SPA) 체결 · 한국 외환신고 · 외화 송금 및 FET 확보',
+                subtitle: '등기 성패를 가르는 한국 외환법 사전신고 및 외환송금증명서(FET) 확보 단계',
+                items: [
+                    {
+                        id: 'p3_1',
+                        title: '본계약서(Sale & Purchase Agreement, SPA) 변호사 검토 및 서명',
+                        summary: 'Freehold 명시, 면적·가격, 준공 지연 위약금, 환불 조건, 마감 사양서 확인',
+                        tag: '계약체결',
+                        tagColor: 'indigo',
+                        reason: '본계약서(SPA)는 법적 구속력을 갖는 핵심 문서입니다. 호실번호, 전용면적, SQM당 단가, Foreign Freehold 배정 여부, 준공 예정일 및 지연 시 개발사 위약금 조항, 계약 해지 시 환불 조건, 인도시 기본 제공 가구·가전 사양서(Spec)가 누락되지 않았는지 태국 부동산 전문 변호사(수임료 약 2~5만 바트)를 통해 검토 후 서명하세요.'
+                    },
+                    {
+                        id: 'p3_2',
+                        title: '[주의사항 교정] 한국 주거래은행 "해외부동산 취득신고" 사전 완료',
+                        summary: '잔금 때가 아닌 "최초 송금(계약금·중도금) 전" 주거래은행에 사전 신고 필수',
+                        tag: '법적의무',
+                        tagColor: 'rose',
+                        reason: '흔히 사후 3개월 이내 신고로 잘못 아는 경우가 많으나, 한국 외국환거래법상 거주자가 해외 부동산을 취득할 때는 최초 자금 송금(계약금·중도금) 전 또는 미화 1만 달러 초과 송금 전에 지정거래외국환은행(주거래은행)에 반드시 사전 취득신고를 해야 합니다. 신고 없이 쪼개기로 먼저 송금하면 외국환거래법 위반으로 과태료 및 제재를 받습니다. (필요 서류: 취득신고서, SPA 사본, 개발사 사업자등록증 사본, 여권/신분증)'
+                    },
+                    {
+                        id: 'p3_3',
+                        title: '계약금(10~20%) 및 중도금(20~40%) USD 외화 송금',
+                        summary: '매수인 본인 명의 계좌에서 반드시 외화(USD)로 송금 및 송금 사유 영문 기재',
+                        tag: '외화송금',
+                        tagColor: 'blue',
+                        reason: '태국 법률상 외국인이 콘도를 등기하려면 매매대금 전액이 해외에서 외화로 유입되어 태국 은행에서 바트화로 환전되었다는 증빙이 필요합니다. 한국에서 원화나 바트화로 바로 환전해 보내면 FET 발급이 거절되므로 반드시 USD 등 외화로 송금해야 하며, 송금인 영문 성명 일치와 비고란의 콘도 구입 목적 영문 기재가 필수입니다.'
+                    },
+                    {
+                        id: 'p3_4',
+                        title: '건별 Credit Advice 또는 FET Form 원본 수령 및 보관',
+                        summary: '5만 달러 이상은 FET Form, 5만 달러 미만 소액은 Credit Advice 발급 보관',
+                        tag: '등기핵심',
+                        tagColor: 'rose',
+                        reason: '건당 송금액이 미화 50,000달러 이상이면 태국 수취 은행에서 FET(Foreign Exchange Transaction) Form을 자동 발급해 주며, 그 미만 소액(계약금·중도금 등)은 은행에 별도로 요청하여 외화입금증명서(Credit Advice)를 발급받아야 합니다. 이 서류들을 모두 모아두었다가 잔금 시의 FET와 합산해 매매가 100% 증빙으로 토지국에 제출합니다.'
+                    },
+                    {
+                        id: 'p3_5',
+                        title: '유심 60일 여권 재인증 규정 대응 및 만료일 주기적 연장',
+                        summary: '개통 후 60일째 재인증 문자 확인 및 한국에서 주기적 소액 충전 유지',
+                        tag: '장기관리',
+                        tagColor: 'slate',
+                        reason: '최근 태국 통신 규정상 외국인 관광객 여권으로 개통한 선불 유심은 개통 후 60일 경과 시 여권 재인증 안내 문자가 올 수 있습니다. 문자 안내에 따라 링크에서 여권 사진·셀카 인증을 진행하거나 B [여권번호]를 적어 4444161로 문자를 발송해 번호 정지를 예방하고, *121#으로 유효기간을 수시로 체크하세요.'
+                    }
+                ]
+            },
+            {
+                id: 'phase4',
+                badge: 'PHASE 4',
+                title: '준공 하자점검 · 잔금 송금 · 토지국 소유권 이전(Chanote)',
+                subtitle: '잔금 납부 전 하자 보수 완료 및 내 명의 파란색 집문서(Chanote) 최종 수령',
+                items: [
+                    {
+                        id: 'p4_1',
+                        title: '준공 후 사전 하자 점검 (Defect Inspection) 먼저 진행',
+                        summary: '잔금 완납 전에 직접 방문 또는 전문 인스펙션 업체 고용해 하자 보수 완료',
+                        tag: '잔금전필수',
+                        tagColor: 'amber',
+                        reason: '태국 신규 콘도는 준공 후 누수, 타일 들뜸, 배수 불량, 에어컨·전기 마감 하자가 빈번합니다. 잔금을 완납해 버리면 개발사의 하자 보수 속도가 현저히 느려지므로, 반드시 잔금 송금 전에 인스펙션을 진행해 하자를 모두 수리받은 뒤 잔금을 치르셔야 합니다.'
+                    },
+                    {
+                        id: 'p4_2',
+                        title: '잔금(40~70%) 송금 및 카드 예약금분 FET 100% 정산 완료',
+                        summary: '초기 카드로 결제한 예약금만큼 포함해 100% 외화 송금 후 예약금 환불 수령',
+                        tag: 'FET 100%',
+                        tagColor: 'rose',
+                        reason: '토지국 등기 시에는 매매대금 100% 전체에 대한 FET(또는 Credit Advice) 합산액이 필요합니다. 현지에서 카드로 결제한 초기 예약금은 해외 송금이 아니므로 FET가 발급되지 않습니다. 따라서 개발사와 사전 합의하여 잔금 송금 시 카드 결제한 예약금만큼을 포함해 100% 외화로 송금하고, 개발사로부터 초기 예약금을 계좌로 돌려받는(Refund) 방식으로 증빙 총액을 맞추어야 합니다.'
+                    },
+                    {
+                        id: 'p4_3',
+                        title: '등기 부대비용 현지 바트(THB) 계좌 잔액 준비',
+                        summary: '이전비(1%), 선수관리적립금, 1년치 관리비 선납, 계량기 보증금 바트 확보',
+                        tag: '부대비용',
+                        tagColor: 'blue',
+                        reason: '등기 당일 매매 잔금 외에 현장에서 바트(THB)로 납부해야 하는 부대비용이 발생합니다. ① 소유권 이전비(Transfer Fee): 감정가의 2% 중 시행사와 매수자가 각 1% 부담 (+등록수수료 0.01%) ② 선수관리적립금(Sinking Fund): 최초 1회 SQM당 500~800바트 ③ 관리비(Maintenance Fee): 1년 치 선납(월 SQM당 45~90바트 수준) ④ 전기·수도 계량기 설치 및 보증금 약 5,000~10,000바트.'
+                    },
+                    {
+                        id: 'p4_4',
+                        title: '관할 토지국(Land Office) 출석 및 소유권 증서(Chanote) 수령',
+                        summary: '매수인(또는 POA 대리인)과 개발사 동행 출석 후 내 명의 집문서 수령',
+                        tag: '최종등기',
+                        tagColor: 'emerald',
+                        reason: '관할 토지국에 매수인(또는 공증된 위임장 POA를 소지한 변호사/대리인)과 개발사 담당자가 함께 출석하여 FET 원본 일체와 부대비용을 납부합니다. 심사가 완료되면 당일 또는 며칠 내에 뒷면에 내 영문 이름이 등재된 소유권 증서(Chanote, 파란색 집문서)가 발급됩니다.'
+                    },
+                    {
+                        id: 'p4_5',
+                        title: '사후 처리: 관리사무소 등록, 유틸리티 명의 변경 및 한국 은행 사후보고',
+                        summary: '관리사무소 계좌 연결, 전기·수도 명의 이전, 화재보험 및 한국 은행 등기부 제출',
+                        tag: '사후완료',
+                        tagColor: 'indigo',
+                        reason: '등기 완료 후 콘도 관리사무소(Juristic Person)에 Chanote 사본을 제출해 입주자 등록 및 관리비 납부 계좌를 연결하고, 전기·수도 계량기 명의를 본인 명의로 이전합니다. 또한 화재/재물 보험에 가입하고, 한국 주거래은행에 해외부동산 취득 보고(등기부등본 사본 제출)를 마무리하면 모든 절차가 완벽히 종료됩니다.'
+                    }
+                ]
+            }
+        ];
+
+        // 2. RETIREMENT E-VISA CHECKLIST DATA
+        const visaChecklistData = [
+            {
+                id: 'v_phase1',
+                badge: 'STEP 1',
+                title: '사전 서류 발급 & 계좌 사전 세팅 (출국 1~2개월 전)',
+                subtitle: '만 50세 이상 Non-O(90일 단수) 신청을 위한 서류 유효기간 및 은행 사전 등록',
+                items: [
+                    {
+                        id: 'v1_1',
+                        title: '여권 유효기간 점검(10년 신규 갱신 권장) 및 여권용 사진 스캔본 준비',
+                        summary: '흰 배경 여권용 사진(JPEG/JPG, 3MB 이하) 및 여권 인적사항면 고화질 스캔',
+                        tag: '기본스펙',
+                        tagColor: 'slate',
+                        reason: 'e-Visa 신청 시 여권 잔여 유효기간이 최소 6개월 이상(1년 연장 고려 시 18개월 이상 여유 권장)이어야 합니다. 업로드하는 모든 파일은 3MB 이하 용량 제한이 있으며, 사진은 최근 6개월 이내 촬영한 흰색 배경의 정면 여권 사진이어야 반려되지 않습니다.'
+                    },
+                    {
+                        id: 'v1_2',
+                        title: '한국 은행 영문 잔고증명서(80만 바트 이상) & 영문 3개월 거래내역서 발급',
+                        summary: '발급일 1개월 이내 유효, 여권 영문 성명·여권번호 일치 및 은행 직인 확인',
+                        tag: '재정증명',
+                        tagColor: 'rose',
+                        reason: '주한 태국대사관 Non-O 신청 시 본인 명의 한국 계좌에 80만 바트(약 3,500만 원 이상) 잔액이 유지되고 있음을 증명해야 합니다. 은행 창구에서 "비자 신청(Visa Application)용"으로 영문 잔고증명서와 최근 3개월 영문 거래내역서를 함께 발급받으세요. 배우자와 각각 신청할 경우 1인당 각각 80만 바트(총 160만 바트) 잔고가 필요합니다.'
+                    },
+                    {
+                        id: 'v1_3',
+                        title: '정부24 온라인 발급: 영문 주민등록등본 & 영문 출입국사실증명서(최근 1년)',
+                        summary: '출입국사실증명서는 "신청일 기준 7일 이내 발급분"만 인정되므로 접수 직전 발급!',
+                        tag: '유효기간주의',
+                        tagColor: 'amber',
+                        reason: '정부24에서 영문 주민등록등본 발급 시 반드시 "여권 정보 활용 동의"를 체크해야 여권과 동일한 영문 이름이 찍힙니다. 특히 영문 출입국사실증명서(최근 1년 기록, 공증 불필요)는 대사관 심사 기준 "7일 이내 발급분"만 유효하므로 온라인 신청서를 작성하는 당일이나 전날 발급해 PDF로 바로 업로드하세요.'
+                    },
+                    {
+                        id: 'v1_4',
+                        title: '우리은행 등 주거래은행 방문: 다이렉트 해외송금 계좌 & 거래외국환은행 지정',
+                        summary: '출국 전 한국 은행 영업점에 방문해 추후 80만 바트 해외송금 한도·서류 사전 등록',
+                        tag: '송금사전등록',
+                        tagColor: 'blue',
+                        reason: '태국 입국 후 현지 계좌를 개설하자마자 80만 바트를 빠르게 이체하려면, 한국 출국 전에 주거래은행 영업점에 들러 "다이렉트 해외송금 저축예금" 가입 및 해외송금 사유·거래외국환은행 지정을 미리 마쳐두는 것이 좋습니다. (환율 우대 및 비대면 송금 한도 확보)'
+                    },
+                    {
+                        id: 'v1_5',
+                        title: '편도 항공권 발권 & 태국 초기 숙소 예약 확인서(영문) 준비',
+                        summary: '출국 30일~45일 전 신청을 목표로 항공권(편도 가능) 및 영문 호텔/임대 바우처 확보',
+                        tag: '여행증빙',
+                        tagColor: 'indigo',
+                        reason: 'Non-O 은퇴 비자 신청 시 왕복 항공권이 아닌 편도 항공권(E-ticket)으로도 신청이 가능합니다. 또한 입국 후 머물 태국 내 숙소 예약 확인서(영문 바우처 또는 임대차계약서)를 업로드해야 하므로 비자 신청 전에 확정해 두세요.'
+                    }
+                ]
+            },
+            {
+                id: 'v_phase2',
+                badge: 'STEP 2',
+                title: '태국 공식 e-Visa 온라인 신청 및 결제 (출국 약 1개월 전)',
+                subtitle: 'thaievisa.go.th 접속 → Non-Immigrant O (Single) 신청 → 약 80 USD 결제',
+                items: [
+                    {
+                        id: 'v2_1',
+                        title: '태국 공식 e-Visa 사이트(thaievisa.go.th) 계정 생성 및 이메일 인증',
+                        summary: '우상단 Create Account → Individual 선택 → 비밀번호(8자 이상, 대소문자+숫자) 설정',
+                        tag: '계정생성',
+                        tagColor: 'slate',
+                        reason: '반드시 공식 도메인(thaievisa.go.th)을 이용하세요. 계정 생성 후 가입한 이메일로 발송되는 활성화(Activation) 링크를 클릭해야 로그인이 가능합니다. 배우자와 함께 신청하는 경우 각각 개별 계정을 만들어 신청하는 것이 가장 깔끔합니다.'
+                    },
+                    {
+                        id: 'v2_2',
+                        title: '비자 유형 선택: Non-Immigrant Visa (O) / Single Entry / Retirement',
+                        summary: 'Apply for a New Visa → 한국(Republic of Korea) 선택 → 목적 Retirement 지정',
+                        tag: '비자선택',
+                        tagColor: 'indigo',
+                        reason: 'O-A 비자가 아닌 일반 Non-Immigrant Visa (O) - Single Entry(90일 체류, 입국 유효기간 3개월)를 선택해야 건강보험 가입 의무 없이 심사가 통과됩니다. 비자 발급일로부터 90일 이내에 태국에 입국해야 하므로 출국일 약 1개월 전에 신청하는 것이 이상적입니다.'
+                    },
+                    {
+                        id: 'v2_3',
+                        title: '신청자 정보·여행 정보 입력 및 지원 서류(3MB 이하) 일괄 업로드',
+                        summary: '여권 사본, 사진, 거주지 증명, 1년 출입국사실증명, 80만 바트 재정증명, 항공권/숙소 업로드',
+                        tag: '서류업로드',
+                        tagColor: 'blue',
+                        reason: '각 항목별로 요구하는 PDF 또는 JPG 파일(3MB 이하)을 정확히 매칭해 업로드합니다. 서류 누락이나 흐릿한 스캔본이 있으면 대사관에서 추가 서류 보완(Request for Additional Documents) 이메일이 오므로 업로드 전 파일 가독성을 꼭 확인하세요.'
+                    },
+                    {
+                        id: 'v2_4',
+                        title: '비자 수수료 결제(약 80 USD) 및 승인 후 e-Visa PDF 출력 지참',
+                        summary: 'VISA/Master 카드로 결제 → 3~15영업일 내 승인 시 PDF 다운로드 및 인쇄',
+                        tag: '승인출력',
+                        tagColor: 'emerald',
+                        reason: '결제 완료 후 상태가 Pending → Processing → Approved로 변경됩니다(보통 3~15영업일 소요). 승인 이메일과 대시보드에서 발급된 e-Visa PDF 파일을 반드시 종이로 출력하여 여권과 함께 지참해야 한국 공항 체크인 및 태국 입국 심사대를 통과할 수 있습니다. (전체 서류 사본도 여유분 2~3부 출력 지참 권장)'
+                    }
+                ]
+            },
+            {
+                id: 'v_phase3',
+                badge: 'STEP 3',
+                title: '태국 입국 직후: 현지 계좌 개설 & 80만 바트 입금 (골든타임)',
+                subtitle: '입국 후 늦어도 30일 이내 계좌 개설 및 80만 바트 입금 완료해야 2개월 예치(Seasoning) 충족',
+                items: [
+                    {
+                        id: 'v3_1',
+                        title: '태국 선불 유심 개통 & 숙소 거주지 신고(TM.30) 영수증 확보',
+                        summary: '현지 전화번호 개통 및 집주인/호텔로부터 TM.30 신고 접수증 수령',
+                        tag: '필수선행',
+                        tagColor: 'amber',
+                        reason: '태국 은행 계좌 개설과 추후 이민국 1년 연장 시 모두 "본인 명의 태국 휴대폰 번호"와 "TM.30(외국인 거주지 신고 영수증)"이 필수 서류입니다. 숙소 계약 직후 집주인(또는 콘도 관리사무소/호텔)에게 이민국 제출용 TM.30 출력본을 반드시 요청해 받으세요.'
+                    },
+                    {
+                        id: 'v3_2',
+                        title: '카시콘 뱅크(Kasikorn Bank) 등 외국인 전담 지점 방문 계좌 개설',
+                        summary: '오전 방문 추천: 여권, e-Visa 출력물, 임대계약서·TM.30, 초기 입금액(약 1만 바트) 지참',
+                        tag: '계좌개설',
+                        tagColor: 'emerald',
+                        reason: '치앙마이 닌만 지점 등 외국인 비자 연장용 계좌 개설 경험이 풍부한 지점에 오전에 방문하여 "I want to open a savings account for retirement visa extension"이라고 요청하세요. 여권, 비자, TM.30, 임대계약서, 태국 유심 번호(필요 시 항공권 영수증·사진 2매)를 제출해 통장(Passbook)·체크카드·K PLUS 모바일 뱅킹 및 PromptPay를 개설합니다.'
+                    },
+                    {
+                        id: 'v3_3',
+                        title: '한국에서 태국 계좌로 80만 바트 외화(USD) 송금 및 입금 완료',
+                        summary: 'SWIFT 코드(KASITHBK)로 USD 외화 송금 → 태국 은행 바트 환전 입금 및 송금증빙 보관',
+                        tag: '골든타임',
+                        tagColor: 'rose',
+                        reason: '이민국 1년 연장 신청일 기준으로 80만 바트가 계좌에 입금된 날로부터 "최소 2개월(60일) 이상" 유지되어야 합니다. 입국 후 90일 체류 기한 내에 2개월 예치 기간을 채우려면 입국 후 30일 이내에 반드시 80만 바트 입금이 완료되어야 합니다. 또한 추후 이민국에서 해외 자금 유입 증빙(Credit Advice/FET)을 요구하는 경우가 많으므로 반드시 한국에서 외화(USD)로 송금하고 SWIFT 영수증을 보관하세요.'
+                    }
+                ]
+            },
+            {
+                id: 'v_phase4',
+                badge: 'STEP 4',
+                title: '이민국 1년 연장(Extension of Stay) & 사후 의무 관리',
+                subtitle: '체류 만료 30일 전부터 신청 가능 (80만 바트 2개월 예치 충족일 이후 방문)',
+                items: [
+                    {
+                        id: 'v4_1',
+                        title: '이민국 방문 1~2일 전: 은행 방문하여 Bank Letter(잔고증명서) 발급 및 통장 정리',
+                        summary: '당일 또는 전날 발급된 은행 잔고증명서(Bank Letter) + 당일 소액 입출금 내역 찍힌 통장 준비',
+                        tag: '방문직전',
+                        tagColor: 'rose',
+                        reason: '태국 이민국은 은행 잔고증명서(Bank Letter)의 유효기간을 매우 엄격하게 봅니다(치앙마이 등 대부분 이민국은 신청 당일 또는 전날 발급분만 인정). 또한 이민국 방문 당일 아침 은행 ATM이나 창구에서 100바트 정도 소액을 입금해 통장(Passbook) 마지막 줄에 "당일 날짜와 80만 바트 이상 잔액"이 찍히도록 업데이트한 뒤 통장 전체 페이지 사본을 준비해야 합니다.'
+                    },
+                    {
+                        id: 'v4_2',
+                        title: '이민국 제출 서류 일체(원본 + 사본) 및 TM.7 신청서 준비',
+                        summary: 'TM.7(4x6cm 사진 부착), 여권/비자/입국스탬프 사본, 임대계약서·TM.30, 수수료 1,900바트 현금',
+                        tag: '서류완비',
+                        tagColor: 'blue',
+                        reason: '모든 사본 하단에는 여권과 동일한 영문 서명을 기재합니다. 준비물: ① TM.7 신청서 및 사진 1~2매(4x6cm) ② 여권 원본 및 인적사항면·Non-O 비자면·입국도장면 사본 ③ 은행 잔고증명서(Bank Letter) 원본 + 통장 원본 및 전 페이지 사본 ④ 임대차계약서 사본 + TM.30 영수증 사본 ⑤ 수수료 1,900바트(현금만 가능).'
+                    },
+                    {
+                        id: 'v4_3',
+                        title: '관할 이민국(Immigration Office) 오전 8시 도착 접수 및 1년 연장 스탬프 수령',
+                        summary: '대기번호 수령 → 서류 심사 및 사진 촬영 → 여권 내 1년(365일) 연장 스탬프 확인',
+                        tag: '1년연장완료',
+                        tagColor: 'emerald',
+                        reason: '치앙마이 등 주요 이민국은 대기 인원이 많으므로 오전 8시경 일찍 도착해 번호표를 받는 것이 좋습니다. 심사가 완료되면 여권에 1년 연장 스탬프가 찍히며, 여권 내에 90일 보고 예정일 안내 종이가 스테이플러로 부착됩니다.'
+                    },
+                    {
+                        id: 'v4_4',
+                        title: '연장 후 필수 의무: 90일 거주지 보고(TM.47) & 출국 전 Re-entry Permit',
+                        summary: '매 90일마다 거주지 신고 준수 및 해외 출국 시 공항/이민국에서 리엔트리 사전 발급',
+                        tag: '사후필수',
+                        tagColor: 'indigo',
+                        reason: '1년 연장 후 태국 체류 중에는 매 90일마다 TM.47 보고를 해야 하며(미신고 시 벌금 2,000바트), 한국 방문 등 해외로 출국할 때는 반드시 출국 전 Re-entry Permit(단수 1,000바트 / 복수 3,800바트)을 받아야 1년 연장 비자가 취소되지 않습니다.'
+                    }
+                ]
+            }
+        ];
+
+        const domainConfigs = {
+            condo: {
+                badges: `
+                    <span class="px-2.5 py-0.5 text-xs font-bold bg-indigo-100 text-indigo-700 rounded-full">태국 전역 공용</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold bg-emerald-100 text-emerald-700 rounded-full">외국인 Freehold 완전소유</span>
+                `,
+                title: '태국 신규 콘도 매매 & 등기 마스터 체크리스트',
+                subtitle: '사전 실사부터 유심·계좌 개설, FET 외화송금, Chanote 명의이전까지 단계별 완벽 가이드',
+                accent: 'indigo',
+                data: condoChecklistData
+            },
+            visa: {
+                badges: `
+                    <span class="px-2.5 py-0.5 text-xs font-bold bg-teal-100 text-teal-700 rounded-full">만 50세 이상 은퇴비자</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold bg-amber-100 text-amber-800 rounded-full">Non-O (90일) → 현지 1년 연장</span>
+                `,
+                title: '태국 은퇴 e-비자(Non-O) & 현지 1년 연장 체크리스트',
+                subtitle: '온라인 e-Visa 발급부터 입국 후 80만 바트 2개월 예치, 이민국 1년 연장 및 90일 보고까지',
+                accent: 'teal',
+                data: visaChecklistData
+            }
+        };
+
+        let activeDomain = localStorage.getItem('thaiMasterActiveDomain') || 'condo';
+        let checkedState = JSON.parse(localStorage.getItem('thaiCondoChecklistState_v3')) || {};
+        let expandedState = JSON.parse(localStorage.getItem('thaiCondoExpandedState_v3')) || {};
+        let currentFilter = 'all';
+
+        const tagStyles = {
+            rose: 'bg-rose-100 text-rose-700 border-rose-200',
+            amber: 'bg-amber-100 text-amber-800 border-amber-200',
+            blue: 'bg-blue-100 text-blue-700 border-blue-200',
+            emerald: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+            indigo: 'bg-indigo-100 text-indigo-700 border-indigo-200',
+            teal: 'bg-teal-100 text-teal-700 border-teal-200',
+            slate: 'bg-slate-100 text-slate-700 border-slate-200'
+        };
+
+        function switchDomain(domain) {
+            activeDomain = domain;
+            localStorage.setItem('thaiMasterActiveDomain', domain);
+            currentFilter = 'all';
+
+            const condoTab = document.getElementById('domain-tab-condo');
+            const visaTab = document.getElementById('domain-tab-visa');
+
+            if (domain === 'condo') {
+                condoTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-indigo-700 shadow-sm';
+                visaTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
+                document.getElementById('memo-section-condo').classList.remove('hidden');
+                document.getElementById('memo-section-visa').classList.add('hidden');
+                document.getElementById('extra-section-condo').classList.remove('hidden');
+                document.getElementById('extra-section-visa').classList.add('hidden');
+                document.getElementById('progress-bar').className = 'bg-indigo-600 h-2.5 rounded-full transition-all duration-500';
+                document.getElementById('progress-text').className = 'text-sm font-bold text-indigo-600';
+                document.getElementById('instruction-hint').className = 'flex items-center justify-between bg-indigo-50/80 border border-indigo-100 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-indigo-900';
+            } else {
+                visaTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-teal-700 shadow-sm';
+                condoTab.className = 'flex-1 py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-1.5 text-slate-600 hover:text-slate-900';
+                document.getElementById('memo-section-visa').classList.remove('hidden');
+                document.getElementById('memo-section-condo').classList.add('hidden');
+                document.getElementById('extra-section-visa').classList.remove('hidden');
+                document.getElementById('extra-section-condo').classList.add('hidden');
+                document.getElementById('progress-bar').className = 'bg-teal-600 h-2.5 rounded-full transition-all duration-500';
+                document.getElementById('progress-text').className = 'text-sm font-bold text-teal-600';
+                document.getElementById('instruction-hint').className = 'flex items-center justify-between bg-teal-50/80 border border-teal-100 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-teal-900';
+            }
+
+            const cfg = domainConfigs[domain];
+            document.getElementById('header-badges').innerHTML = cfg.badges;
+            document.getElementById('header-title').textContent = cfg.title;
+            document.getElementById('header-subtitle').textContent = cfg.subtitle;
+
+            renderPhaseTabs();
+            renderChecklist();
+        }
+
+        function renderPhaseTabs() {
+            const tabsContainer = document.getElementById('phase-tabs');
+            const cfg = domainConfigs[activeDomain];
+            const activeBg = activeDomain === 'condo' ? 'bg-indigo-600' : 'bg-teal-600';
+
+            let html = `<button onclick="filterPhase('all', this)" class="phase-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold ${currentFilter === 'all' ? activeBg + ' text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'} whitespace-nowrap transition">전체 보기</button>`;
+
+            cfg.data.forEach((phase, idx) => {
+                const shortTitle = phase.title.split(':')[0];
+                const isSelected = currentFilter === phase.id;
+                html += `<button onclick="filterPhase('${phase.id}', this)" class="phase-btn px-3.5 py-1.5 rounded-lg text-xs sm:text-sm ${isSelected ? activeBg + ' text-white font-semibold' : 'bg-slate-100 text-slate-600 font-medium hover:bg-slate-200'} whitespace-nowrap transition">${idx + 1}단계: ${shortTitle}</button>`;
+            });
+
+            tabsContainer.innerHTML = html;
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+
+            const currentData = domainConfigs[activeDomain].data;
+            const accentText = activeDomain === 'condo' ? 'text-indigo-600' : 'text-teal-600';
+            const checkboxColor = activeDomain === 'condo' ? 'text-indigo-600 focus:ring-indigo-500' : 'text-teal-600 focus:ring-teal-500';
+            const reasonBg = activeDomain === 'condo' ? 'bg-indigo-50/60 border-indigo-100' : 'bg-teal-50/60 border-teal-100';
+            const reasonTitleColor = activeDomain === 'condo' ? 'text-indigo-900' : 'text-teal-900';
+
+            currentData.forEach(phase => {
+                if (currentFilter !== 'all' && currentFilter !== phase.id) return;
+
+                const phaseCompleted = phase.items.filter(item => checkedState[item.id]).length;
+                const phaseTotal = phase.items.length;
+
+                const section = document.createElement('section');
+                section.className = 'bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden';
+
+                let itemsHtml = phase.items.map(item => {
+                    const isChecked = !!checkedState[item.id];
+                    const isExpanded = !!expandedState[item.id];
+                    
+                    return `
+                        <div class="step-card rounded-xl border transition-all ${isChecked ? 'bg-slate-50/70 border-slate-200' : 'bg-white border-slate-200 hover:border-slate-300'} ${isExpanded ? 'ring-1 ring-slate-300 expanded' : ''}">
+                            <div class="flex items-start gap-3.5 p-4">
+                                <!-- Checkbox Column -->
+                                <div class="pt-0.5 shrink-0">
+                                    <input type="checkbox" id="${item.id}" ${isChecked ? 'checked' : ''} onchange="toggleItem('${item.id}')" class="w-5 h-5 rounded-md border-slate-300 ${checkboxColor} cursor-pointer">
+                                </div>
+                                
+                                <!-- Clickable Accordion Header Area -->
+                                <div onclick="toggleExpand('${item.id}')" class="flex-1 min-w-0 cursor-pointer select-none">
+                                    <div class="flex items-start justify-between gap-2">
+                                        <div>
+                                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                                <span class="px-2 py-0.5 text-[11px] font-bold rounded-md border ${tagStyles[item.tagColor]}">${item.tag}</span>
+                                                <h4 class="font-bold text-sm sm:text-base ${isChecked ? 'line-through text-slate-400' : 'text-slate-900'}">${item.title}</h4>
+                                            </div>
+                                            <p class="text-xs sm:text-sm ${isChecked ? 'text-slate-400' : 'text-slate-600'}">${item.summary}</p>
+                                        </div>
+                                        <div class="p-1 text-slate-400 hover:text-slate-700 shrink-0 mt-0.5">
+                                            <svg class="w-5 h-5 chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Expanded Detailed Reason Section -->
+                            <div class="${isExpanded ? 'block' : 'hidden'} px-4 pb-4 pt-0 pl-12">
+                                <div class="p-3.5 rounded-xl ${reasonBg} border text-xs sm:text-sm text-slate-700 leading-relaxed">
+                                    <div class="font-bold ${reasonTitleColor} mb-1 flex items-center gap-1.5">
+                                        <span>💡 핵심 이유 및 실무 주의사항</span>
+                                    </div>
+                                    <p>${item.reason}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                section.innerHTML = `
+                    <div class="bg-slate-50/90 px-5 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-extrabold tracking-wider ${accentText} uppercase">${phase.badge}</span>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600">${phaseCompleted} / ${phaseTotal} 완료</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mt-0.5">${phase.title}</h3>
+                            <p class="text-xs text-slate-500 mt-0.5">${phase.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 space-y-3">
+                        ${itemsHtml}
+                    </div>
+                `;
+
+                container.appendChild(section);
+            });
+
+            updateProgress();
+        }
+
+        function toggleItem(id) {
+            checkedState[id] = !checkedState[id];
+            localStorage.setItem('thaiCondoChecklistState_v3', JSON.stringify(checkedState));
+            renderChecklist();
+        }
+
+        function toggleExpand(id) {
+            expandedState[id] = !expandedState[id];
+            localStorage.setItem('thaiCondoExpandedState_v3', JSON.stringify(expandedState));
+            renderChecklist();
+        }
+
+        function toggleAllAccordions(expand) {
+            const currentData = domainConfigs[activeDomain].data;
+            currentData.forEach(phase => {
+                phase.items.forEach(item => {
+                    expandedState[item.id] = expand;
+                });
+            });
+            localStorage.setItem('thaiCondoExpandedState_v3', JSON.stringify(expandedState));
+            renderChecklist();
+            showToast(expand ? '현재 탭의 모든 상세 설명을 펼쳤습니다.' : '모든 상세 설명을 접었습니다.');
+        }
+
+        function updateProgress() {
+            let total = 0;
+            let completed = 0;
+            const currentData = domainConfigs[activeDomain].data;
+
+            currentData.forEach(phase => {
+                phase.items.forEach(item => {
+                    total++;
+                    if (checkedState[item.id]) completed++;
+                });
+            });
+
+            const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text').textContent = `${percent}%`;
+            document.getElementById('completed-count').textContent = `${completed} / ${total} 완료`;
+
+            if (percent === 100 && total > 0) {
+                const msg = activeDomain === 'condo'
+                    ? '축하합니다! 모든 절차가 완료되어 콘도 소유권 등기(Chanote)까지 마쳤습니다!'
+                    : '축하합니다! 태국 은퇴 e-비자 발급부터 현지 1년 연장 절차까지 모두 완료했습니다!';
+                showToast(msg);
+            }
+        }
+
+        function filterPhase(phaseId, btnEl) {
+            currentFilter = phaseId;
+            renderPhaseTabs();
+            renderChecklist();
+        }
+
+        function resetProgress() {
+            const currentData = domainConfigs[activeDomain].data;
+            currentData.forEach(phase => {
+                phase.items.forEach(item => {
+                    delete checkedState[item.id];
+                });
+            });
+            localStorage.setItem('thaiCondoChecklistState_v3', JSON.stringify(checkedState));
+            renderChecklist();
+            showToast('현재 탭의 체크리스트 진행 상태가 초기화되었습니다.');
+        }
+
+        // Memo Auto-Save Logic (Condo & Visa)
+        const memoIds = [
+            'memo-unit', 'memo-price', 'memo-bank', 'memo-sim',
+            'visa-entry', 'visa-deposit-date', 'visa-bank', 'visa-imm-date'
+        ];
+        memoIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const savedVal = localStorage.getItem('thaiMaster_v3_' + id);
+            if (savedVal) el.value = savedVal;
+
+            el.addEventListener('input', () => {
+                localStorage.setItem('thaiMaster_v3_' + id, el.value);
+                document.querySelectorAll('.save-status-indicator').forEach(ind => {
+                    ind.textContent = '저장 중...';
+                    setTimeout(() => {
+                        ind.textContent = '브라우저 자동 저장됨';
+                    }, 400);
+                });
+
+                if (id === 'memo-unit') {
+                    const unitVal = el.value.trim() || '[Condo Name Unit No]';
+                    document.getElementById('remittance-text').textContent = `To purchase a condominium unit ${unitVal}`;
+                }
+            });
+        });
+
+        // Initial Load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedUnit = localStorage.getItem('thaiMaster_v3_memo-unit');
+            if (savedUnit) {
+                document.getElementById('remittance-text').textContent = `To purchase a condominium unit ${savedUnit}`;
+            }
+            switchDomain(activeDomain);
+        });
+
+        // Clipboard Copy Function (iFrame safe)
+        function copyTextById(elementId, toastMessage) {
+            const text = document.getElementById(elementId).textContent;
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast(toastMessage);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
